@@ -1,0 +1,19 @@
+#surat-suara {
+    transform-origin: right;
+    animation: 3s infinite masuk;
+}
+
+@keyframes masuk {
+    from {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    4% {
+        opacity: 0;
+    }
+    20%,
+    to {
+        transform: rotate(-360deg);
+        opacity: 1;
+    }
+}
