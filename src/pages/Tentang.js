@@ -1,6 +1,6 @@
-import icon from '../assets/img/pemilu-pub-icon.svg';
 import { useTheme } from "@emotion/react";
-import { Card, CardContent, CardHeader, Container, Grow, Stack } from "@material-ui/core";
+import { Card, CardContent, Container, Grow, Link, Stack } from "@material-ui/core";
+import Logo from '../components/Logo';
 
 export default function Tentang(props) {
   return (
@@ -9,17 +9,23 @@ export default function Tentang(props) {
 
         <Grow in={true} style={{ transformOrigin: '50% 0' }}>
           <Card>
-            <CardHeader title="PUBVoting" sx={{ p: 3, pb: 0 }} />
             <CardContent sx={{ px: 3 }}>
-              <img src={icon} className="App-icon" alt="icon" width={128} />
+              <Logo size={40} />
               <p style={{ marginTop: 0 }}>
                 Versi 2.0.0 Alpha
               </p>
               <p>
-                Framework Back-End: Django REST Framework<br />
-                Framework Front-End: React<br />
-                Library: Material-UI<br />
-                Metode otentikasi: JWT & Google OAuth 2.0
+                Developer front-end: Romi Kusuma Bakti<br />
+                Developer back-end: Romi Kusuma Bakti<br />
+                Framework front-end: React<br />
+                Library UI: Material-UI<br />
+                Framework back-end: Django REST Framework<br />
+                Basis data: MySQL<br />
+                Metode otentikasi: JWT & Google OAuth 2.0<br />
+                Repository GitHub:{' '}
+                <Link href="https://github.com/romikusumabakti/pemilu-pub" target="_blank" sx={{ wordBreak: 'break-all' }}>
+                  https://github.com/romikusumabakti/pemilu-pub
+                </Link>
               </p>
               <p style={{ marginBottom: 0 }}>
                 © 2021 Pemberdayaan Umat Berkelanjutan<br />

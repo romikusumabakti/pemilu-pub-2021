@@ -5,15 +5,15 @@ import React from 'react';
 import KartuPilihKandidat from '../components/KartuPilihKandidat';
 import KonfirmasiPilih from '../components/KonfirmasiPilih';
 import { useEffect, useState } from "react";
-import { API_URL } from "../App";
+import { API_URL, token } from "../App";
 import Loading from '../components/Loading';
 
-export default function Simulasi(props) {
+export default function Pemilihan(props) {
 
   const [daftarKandidat, setDaftarKandidat] = useState([]);
 
   useEffect(() => {
-    fetch(API_URL + '/pemilu/simulasi/kandidat/')
+    fetch(API_URL + '/kandidat/')
       .then(response => {
         if (!response.ok) {
           throw new Error();
@@ -39,6 +39,9 @@ export default function Simulasi(props) {
       }
       fetch(API_URL + '/pemilu/pilih/', {
         method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + token.access,
+        },
         body: formData,
       })
         .then(response => {
@@ -63,12 +66,12 @@ export default function Simulasi(props) {
 
   if (daftarKandidat.length > 0) {
     return (
-      <Container component="main" maxWidth="md" sx={{ p: theme.padding }}>
+      <Container component="main" maxWidth="sm" sx={{ p: theme.padding }}>
         <Stack spacing={theme.padding}>
           <Stack direction="row" spacing={1} justifyContent="center">
             <HowToVoteIcon sx={{ fontSize: 32 }} />
             <Typography variant="h5" component="h1">
-              Simulasi Pemilihan Ketua PUB
+              Surat Suara Pemilihan Ketua PUB
             </Typography>
           </Stack>
           <Grow in={true} style={{ transformOrigin: '50% 0' }}>

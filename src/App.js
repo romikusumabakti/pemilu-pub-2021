@@ -36,11 +36,13 @@ const Jadwal = React.lazy(() => import('./pages/Jadwal'));
 const Kandidat = React.lazy(() => import('./pages/Kandidat'));
 const Pemilih = React.lazy(() => import('./pages/Pemilih'));
 const Simulasi = React.lazy(() => import('./pages/Simulasi'));
+const Statistik = React.lazy(() => import('./pages/Statistik'));
+const Hasil = React.lazy(() => import('./pages/Hasil'));
 const Login = React.lazy(() => import('./pages/Login'));
 const Daftar = React.lazy(() => import('./pages/Daftar'));
 const ReactStart = React.lazy(() => import('./pages/ReactStart'));
 
-export const API_URL = process.env.NODE_ENV === 'production' ? 'https://api.pubpasim.org' : 'http://127.0.0.1:8000';
+export const API_URL = process.env.NODE_ENV === 'production' ? 'https://pemilu-api.pubpasim.org' : 'http://127.0.0.1:8000';
 
 export const daftarHalaman = [
   [{
@@ -70,12 +72,12 @@ export const daftarHalaman = [
     icon: <HowToVoteIcon />
   }, {
     jalur: '/statistik',
-    component: <ReactStart />,
+    component: <Statistik />,
     title: 'Statistik',
     icon: <BarChartIcon />
   }, {
     jalur: '/hasil',
-    component: <ReactStart />,
+    component: <Hasil />,
     title: 'Hasil',
     icon: <DataUsageIcon />
   }], [{

@@ -11,7 +11,7 @@ export default function Kandidat(props) {
   const [daftarKandidat, setDaftarKandidat] = useState([]);
 
   useEffect(() => {
-    fetch(API_URL + '/kandidat/')
+    fetch(API_URL + '/pemilu/kandidat/')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

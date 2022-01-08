@@ -1,7 +1,7 @@
 {
     "name": "pemilu-pub",
     "version": "0.1.0",
-    "homepage": "http://romikusumabakti.github.io/pemilu-pub",
+    "homepage": "https://pemilu.pubpasim.org",
     "private": true,
     "dependencies": {
         "@emotion/react": "^11.4.0",

@@ -9,25 +9,52 @@ import Container from '@material-ui/core/Container';
 import { Card, Stack } from '@material-ui/core';
 import { useTheme } from '@emotion/react';
 import { Link } from '@material-ui/core';
-import { API_URL } from '../App';
+import { AkunLoginContext, API_URL } from '../App';
 
 export default function Login() {
+    const { setAkunLogin } = React.useContext(AkunLoginContext);
+    
+    function getAkunLogin(token) {
+        fetch(API_URL + '/akun_login/', {
+          headers: {
+            'Authorization': 'Bearer ' + token.access,
+          }
+        })
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            console.log(data);
+            setAkunLogin(data);
+            window.location.href = '/';
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+    
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        fetch(API_URL + '/token/', {
+        fetch(API_URL + '/login/', {
             method: 'POST',
             body: new FormData(document.periksaId),
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    if (response.status === 400) {
+                        alert('NIM/NIDN tidak valid.');
+                    } else if (response.status === 401) {
+                        alert('Kata sandi salah.');
+                    }
+                    throw new Error();
                 }
                 return response.json();
             })
             .then(token => {
                 localStorage.setItem('accessToken', token.access);
                 localStorage.setItem('refreshToken', token.refresh);
+                getAkunLogin(token);
             }).catch((error) => {
                 console.error(error);
             });

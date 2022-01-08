@@ -35,7 +35,7 @@ export default function MenuAkun() {
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Tooltip title="Setelan akun">
+                <Tooltip title={'Akun PUB (' + akunLogin?.mahasiswa?.nama + ')'}>
                     <IconButton onClick={handleClick} size="small">
                         <Avatar alt={akunLogin?.mahasiswa?.nama} src={localStorage.getItem('profilePicture')} />
                     </IconButton>

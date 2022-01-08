@@ -7,7 +7,7 @@ import { AkunLoginContext } from '../App';
 import { useContext } from 'react';
 
 function Beranda() {
-  const { akunLogin, setAkunLogin } = useContext(AkunLoginContext);
+  const { akunLogin } = useContext(AkunLoginContext);
 
   return (
     <Container component="main" maxWidth="md" sx={{ p: useTheme().padding }}>
@@ -15,20 +15,36 @@ function Beranda() {
 
         <LogoAnimasi size={40} />
 
-        {akunLogin ?
-          <Grow in={true} style={{ transformOrigin: '50% 0' }}>
-            <Card>
-              <CardHeader title={'Hai, ' + akunLogin?.mahasiswa?.nama + '!'} sx={{ p: 3, pb: 0 }} />
-              <CardContent sx={{ px: 3 }}>
-                <p style={{ marginBlock: 0 }}>
-                  Pemilihan Ketua PUB tahun 2021 insya Allah akan dilaksanakan pada tanggal 17 Agustus 2021.
-                </p>
-              </CardContent>
-              <CardActions sx={{ pt: 0 }}>
-                <Button color="secondary" sx={{ ml: 'auto' }} component={Link} to="/jadwal">Selengkapnya</Button>
-              </CardActions>
-            </Card>
-          </Grow>
+        {akunLogin ? (
+          akunLogin.mahasiswa.sudah_memilih ?
+            <Grow in={true} style={{ transformOrigin: '50% 0' }}>
+              <Card>
+                <CardHeader title={'Hai, ' + akunLogin?.mahasiswa?.nama + '!'} sx={{ p: 3, pb: 0 }} />
+                <CardContent sx={{ px: 3 }}>
+                  <p style={{ marginBlock: 0 }}>
+                    Terima kasih telah mengikuti Pemilihan Ketua PUB tahun 2021.
+                  </p>
+                </CardContent>
+                <CardActions sx={{ pt: 0 }}>
+                  <Button color="secondary" sx={{ ml: 'auto' }} component={Link} to="/statistik">Pantau statistik</Button>
+                </CardActions>
+              </Card>
+            </Grow>
+            :
+            <Grow in={true} style={{ transformOrigin: '50% 0' }}>
+              <Card>
+                <CardHeader title={'Hai, ' + akunLogin?.mahasiswa?.nama + '!'} sx={{ p: 3, pb: 0 }} />
+                <CardContent sx={{ px: 3 }}>
+                  <p style={{ marginBlock: 0 }}>
+                    Pemilihan Ketua PUB tahun 2021 telah dibuka. Sekarang Anda bisa menggunakan hak pilih Anda.
+                  </p>
+                </CardContent>
+                <CardActions sx={{ pt: 0, px: 3, pb: 3 }}>
+                  <Button variant="contained" sx={{ ml: 'auto' }} component={Link} to="/pemilihan">Pilih sekarang</Button>
+                </CardActions>
+              </Card>
+            </Grow>
+        )
           :
           <Grow in={true} style={{ transformOrigin: '50% 0' }}>
             <Card>

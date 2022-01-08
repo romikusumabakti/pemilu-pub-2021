@@ -17,22 +17,27 @@ function Daftar() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        fetch(API_URL + '/coba_buat_akun/', {
-            method: 'POST',
-            body: new FormData(document.periksaId),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
+        if (document.periksaId.passwordConfirmation.value === document.periksaId.password.value)
+            fetch(API_URL + '/coba_buat_akun/', {
+                method: 'POST',
+                body: new FormData(document.periksaId),
             })
-            .then(hash => {
-                window.location.href = API_URL + '/authorize/?id=' + document.periksaId.username.value + '&hash=' + hash;
-            })
-            .catch((error) => {
-              console.error(error);
-            });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error();
+                    }
+                    return response.json();
+                })
+                .then(hash => {
+                    window.location.href = API_URL + '/authorize/?id=' + document.periksaId.username.value + '&hash=' + hash;
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert('NIM/NIDN tidak valid.');
+                });
+        else {
+            alert('Konfirmasi kata sandi tidak cocok.');
+        }
     };
 
     return (
