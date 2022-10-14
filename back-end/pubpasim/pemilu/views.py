@@ -143,6 +143,7 @@ class Login(views.APIView):
         if anggota.exists():
             akun = User.objects.filter(anggota=anggota.get())
             if akun.exists():
+                print(authenticate(username=anggota.get(), password='1234'))
                 if akun.get().check_password(request.POST['password']):
                     refresh = RefreshToken.for_user(akun.get())
 
@@ -326,7 +327,7 @@ class KandidatList(generics.ListCreateAPIView):
     serializer_class = KandidatSerializer
     permission_classes = [IsAdminUser]
 
-class Kandidat(generics.RetrieveUpdateDestroyAPIView):
+class KandidatView(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = 'nomor'
     queryset = Kandidat.objects.all()
     serializer_class = KandidatSerializer
@@ -337,7 +338,7 @@ class AnggotaList(generics.ListCreateAPIView):
     serializer_class = AnggotaSerializer
     permission_classes = [IsAdminUser]
 
-class Anggota(generics.RetrieveUpdateDestroyAPIView):
+class AnggotaView(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = 'nim'
     queryset = Anggota.objects.all()
     serializer_class = AnggotaSerializer
@@ -348,7 +349,7 @@ class DapilList(generics.ListCreateAPIView):
     serializer_class = DapilSerializer
     permission_classes = [IsAdminUser]
 
-class Dapil(generics.RetrieveUpdateDestroyAPIView):
+class DapilView(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
     queryset = Dapil.objects.all()
     serializer_class = DapilSerializer
@@ -359,7 +360,7 @@ class AngkatanList(generics.ListCreateAPIView):
     serializer_class = AngkatanSerializer
     permission_classes = [IsAdminUser]
 
-class Angkatan(generics.RetrieveUpdateDestroyAPIView):
+class AngkatanView(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = 'nomor'
     queryset = Angkatan.objects.all()
     serializer_class = AngkatanSerializer

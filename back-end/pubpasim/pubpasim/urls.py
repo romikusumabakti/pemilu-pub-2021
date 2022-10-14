@@ -27,16 +27,16 @@ urlpatterns = [
     path('admin/login/', views.AdminLogin.as_view(), name='admin_login'),
 
     path('admin/kandidat/', views.KandidatList.as_view(), name='admin_kandidat_list'),
-    path('admin/kandidat/<nomor>/', views.Kandidat.as_view(), name='admin_kandidat'),
+    path('admin/kandidat/<nomor>/', views.KandidatView.as_view(), name='admin_kandidat'),
 
     path('admin/anggota/', views.AnggotaList.as_view(), name='admin_anggota_list'),
-    path('admin/anggota/<nim>/', views.Anggota.as_view(), name='admin_anggota'),
+    path('admin/anggota/<nim>/', views.AnggotaView.as_view(), name='admin_anggota'),
 
     path('admin/dapil/', views.DapilList.as_view(), name='admin_dapil_list'),
-    path('admin/dapil/<id>/', views.Dapil.as_view(), name='admin_dapil'),
+    path('admin/dapil/<id>/', views.DapilView.as_view(), name='admin_dapil'),
 
     path('admin/angkatan/', views.AngkatanList.as_view(), name='admin_angkatan_list'),
-    path('admin/angkatan/<nomor>/', views.Angkatan.as_view(), name='admin_angkatan'),
+    path('admin/angkatan/<nomor>/', views.AngkatanView.as_view(), name='admin_angkatan'),
 
     path('authorize/', views.authorize, name='authorize'),
     path('oauth2callback/', views.oauth2callback, name='oauth2callback'),

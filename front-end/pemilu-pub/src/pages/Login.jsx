@@ -119,7 +119,7 @@ export default function Login() {
             />
             <Grid container>
               <Grid item xs>
-                <Button color="secondary" component={Link} to="/daftar">
+                <Button color="secondary" component={RouterLink} to="/daftar">
                   Daftar
                 </Button>
               </Grid>

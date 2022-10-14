@@ -20,7 +20,7 @@ export default function KonfirmasiPilih({ onClose, pilihan, ...rest }) {
     p =
       pilihan.nomor.toString().padStart(2, "0") +
       " (" +
-      pilihan.pemilih.nama +
+      pilihan.anggota.nama +
       ")";
     customTheme = theme.createCustomTheme(theme, pilihan.warna);
   }

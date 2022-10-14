@@ -12,7 +12,7 @@ import {
 import LogoAnimasi from "../components/LogoAnimasi";
 import { Link } from "react-router-dom";
 
-import { AuthContext } from "../App";
+import { API_URL, AuthContext } from "../App";
 import { useContext } from "react";
 
 function Beranda() {
@@ -28,11 +28,11 @@ function Beranda() {
         <LogoAnimasi size={40} />
 
         {account ? (
-          account.pemilih.sudah_memilih ? (
+          account.anggota.sudah_memilih ? (
             <Grow in={true} style={{ transformOrigin: "50% 0" }}>
               <Card>
                 <CardHeader
-                  // title={"Hai, " + account?.pemilih?.nama + "!"}
+                  // title={"Hai, " + account?.anggota?.nama + "!"}
                   sx={{ p: 3, pb: 0 }}
                 />
                 <CardContent sx={{ px: 3 }}>
@@ -56,7 +56,7 @@ function Beranda() {
             <Grow in={true} style={{ transformOrigin: "50% 0" }}>
               <Card>
                 <CardHeader
-                  // title={"Hai, " + account?.pemilih?.nama + "!"}
+                  // title={"Hai, " + account?.anggota?.nama + "!"}
                   sx={{ p: 3, pb: 0 }}
                 />
                 <CardContent sx={{ px: 3 }}>
@@ -122,7 +122,7 @@ function Beranda() {
             />
             <CardContent sx={{ px: 3 }}>
               <img
-                src="/gambar/foto_kandidat/kartun.png"
+                src={`${API_URL}/static/images/foto-kandidat/kartun.png`}
                 height={192}
                 alt="Kartun kandidat ketua/keamanan PUB 2021/2022"
               />
