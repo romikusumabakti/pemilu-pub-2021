@@ -5,7 +5,7 @@ import React from "react";
 import KartuPilihKandidat from "../components/KartuPilihKandidat";
 import KonfirmasiPilih from "../components/KonfirmasiPilih";
 import { useEffect, useState } from "react";
-import { API_URL, token } from "../App";
+import { API_URL } from "../App";
 import Loading from "../components/Loading";
 
 export default function Pemilihan(props) {
@@ -40,7 +40,7 @@ export default function Pemilihan(props) {
       fetch(API_URL + "/pilih/", {
         method: "POST",
         headers: {
-          Authorization: "Bearer " + token.access,
+          Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
         },
         body: formData,
       })

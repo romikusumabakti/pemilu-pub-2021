@@ -27,7 +27,7 @@ import MenuAkun from "./MenuAkun";
 
 function Header(props) {
   const theme = useTheme();
-  const { account } = useContext(AuthContext);
+  const { account } = useContext(AuthContext) || {};
   const { adminToken, setAdminToken } = useContext(AdminAuthContext);
   const navigate = useNavigate();
 

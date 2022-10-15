@@ -36,10 +36,9 @@ export default function MenuAkun() {
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <Tooltip title={"Akun PUB (" + account?.anggota?.nama + ")"}>
           <IconButton onClick={handleClick} size="small">
-            <Avatar
-              alt={account?.anggota?.nama}
-              src={localStorage.getItem("profilePicture")}
-            />
+            {account?.anggota && (
+              <Avatar alt={account.anggota.nama} src={account.anggota.foto} />
+            )}
           </IconButton>
         </Tooltip>
       </Box>
@@ -62,10 +61,9 @@ export default function MenuAkun() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem>
-          <Avatar
-            alt={account?.anggota?.nama}
-            src={sessionStorage.getItem("profilePicture")}
-          />{" "}
+          {account?.anggota && (
+            <Avatar alt={account.anggota.nama} src={account.anggota.foto} />
+          )}{" "}
           {account?.anggota?.nama}
         </MenuItem>
         <Divider />

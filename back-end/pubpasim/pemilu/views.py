@@ -143,7 +143,6 @@ class Login(views.APIView):
         if anggota.exists():
             akun = User.objects.filter(anggota=anggota.get())
             if akun.exists():
-                print(authenticate(username=anggota.get(), password='1234'))
                 if akun.get().check_password(request.POST['password']):
                     refresh = RefreshToken.for_user(akun.get())
 

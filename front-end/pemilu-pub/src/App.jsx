@@ -35,6 +35,7 @@ import Loading from "./components/Loading";
 import ScrollToTop from "./components/ScrollToTop";
 import Footer, { Copyright } from "./components/Footer";
 import Tentang from "./pages/Tentang";
+import Pemilihan from "./pages/Pemilihan";
 
 const Beranda = lazy(() => import("./pages/Beranda"));
 const Jadwal = lazy(() => import("./pages/Jadwal"));
@@ -410,6 +411,7 @@ function App() {
                       />
                     ))
                   )}
+                  <Route path="/pemilihan" element={<Pemilihan />} />
                 </Route>
                 <Route path="admin">
                   {daftarHalamanAdmin.map((daftar) =>
